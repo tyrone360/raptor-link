@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d16">
+    <meta name="description" content="Enter RAPTOR LINK — discover, explore and customise the Ford Ranger experience.">
+
+    <title>RAPTOR LINK | Enter the Experience</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/icons/facon/favicon.ico">
+    <link rel="stylesheet" href="css/welcome.css">
+</head>
+
+<body>
+
+    <main class="welcome-screen">
+
+        <!-- CINEMATIC BACKGROUND -->
+        <div class="welcome-background">
+            <img
+                src="assets/images/raptor-desert.webp"
+                alt="Ford Ranger Raptor"
+                class="welcome-vehicle"
+            >
+        </div>
+
+        <div class="background-overlay"></div>
+        <div class="background-glow"></div>
+
+        <!-- TOP BRANDING -->
+        <header class="welcome-header">
+            <a href="welcome.html" class="brand">
+    
+            </a>
+
+            <div class="experience-status">
+                <span class="status-dot"></span>
+                THE EXPERIENCE STARTS HERE
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <section class="welcome-content">
+
+            <div class="welcome-eyebrow">
+                <span></span>
+                BEYOND ORDINARY
+                <span></span>
+            </div>
+
+            <h1>
+                BUILT FOR<br>
+                <span>THE BOLD.</span>
+            </h1>
+
+            <p class="welcome-description">
+                Discover the power. Explore the design.
+                Make your Ranger experience yours.
+            </p>
+
+            <div class="vehicle-caption">
+                <span class="caption-line"></span>
+                <span>FORD RANGER EXPERIENCE</span>
+            </div>
+
+        </section>
+
+        <!-- SLIDE TO ENTER -->
+        <footer class="welcome-footer">
+
+            <div class="swipe-instruction">
+                <span class="instruction-line"></span>
+                <span>YOUR JOURNEY STARTS NOW</span>
+                <span class="instruction-line"></span>
+            </div>
+
+            <div class="swipe-track" id="swipeTrack">
+
+                <div class="swipe-progress" id="swipeProgress"></div>
+
+                <button
+                    type="button"
+                    class="swipe-handle"
+                    id="swipeHandle"
+                    aria-label="Slide right to enter RAPTOR LINK"
+                >
+                    <span class="handle-arrow">›</span>
+                </button>
+
+                <span class="swipe-text" id="swipeText">
+                    SLIDE TO ENTER
+                </span>
+
+            </div>
+
+            <p class="swipe-hint">
+                Slide right to explore RAPTOR LINK
+            </p>
+
+            <a href="index.html" class="skip-entry">
+                ENTER SHOWROOM <span>→</span>
+            </a>
+
+        </footer>
+
+        <div class="welcome-version">
+            RAPTOR LINK <span>•</span> THE NEXT EXPERIENCE
+        </div>
+
+    </main>
+
+    <script src="js/welcome.js"></script>
+
+</body>
+</html>

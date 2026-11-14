@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+
+    <title>Raptor Custom Lab | RAPTOR LINK</title>
+<link rel="icon" href="assets/icons/facon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/customiser.css">
+</head>
+
+<body>
+
+<div class="custom-lab">
+<!-- HEADER -->
+<header class="lab-header">
+    <a href="index.html" class="lab-brand">
+        <img
+            src="assets/images/raptor-logo.jpg"
+            alt="RAPTOR LINK Logo"
+            class="lab-logo"
+        >
+        <span class="lab-brand-text">
+            <span>CUSTOM LAB</span>
+        </span>
+    </a>
+
+    <a href="index.html" class="lab-back">← Back to showroom</a>
+</header>
+
+    <!-- INTRO -->
+    <section class="lab-intro">
+        <span class="eyebrow">YOUR TRUCK. YOUR STYLE.</span>
+        <h1>BUILD YOUR DREAM.</h1>
+        <p>Customise your machine. Explore its performance. Make it yours.</p>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="lab-layout">
+
+        <!-- VEHICLE PREVIEW -->
+        <section class="vehicle-preview">
+
+            <div class="preview-heading">
+                <h2>Vehicle Preview</h2>
+                <span>LIVE BUILD</span>
+            </div>
+
+            <div class="vehicle-stage">
+                <div class="vehicle-image-wrap">
+                    <img
+                        src="assets/images/colours/Factorie.png"
+                        alt="Ford Ranger Raptor"
+                        id="customVehicleImage"
+                    >
+                </div>
+            </div>
+
+            <div class="preview-caption">
+                <strong id="vehicleModelName">FORD RANGER RAPTOR</strong>
+                <span id="selectedBuildStatus">Factory</span>
+            </div>
+
+        </section>
+
+        <!-- CUSTOMISATION PANEL -->
+        <section class="custom-panel">
+
+            <h2>Customise your build</h2>
+
+            <p class="option-placeholder">
+                Choose your vehicle and preferred factory colour.
+            </p>
+
+            <!-- VEHICLE MODEL SELECTOR -->
+            <div class="model-selector-section">
+
+                <h3>01 / Choose Your Vehicle</h3>
+
+                <div class="vehicle-model-selector">
+
+                    <button type="button"
+                        class="model-choice active"
+                        data-model="raptor">
+                        RANGER RAPTOR
+                    </button>
+
+                    <button type="button"
+                        class="model-choice"
+                        data-model="platinum">
+                        RANGER PLATINUM
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- RAPTOR COLOURS -->
+            <div class="colour-selector-section" id="raptorColourSection">
+
+                <h3>02 / Raptor Colours</h3>
+
+                <div id="colourOptions" class="colour-options">
+
+                    <button type="button" class="colour-choice active" data-colour="original">
+                        <span class="colour-swatch factory"></span>
+                        <span>Factory</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="red">
+                        <span class="colour-swatch red"></span>
+                        <span>Race Red</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="blue">
+                        <span class="colour-swatch blue"></span>
+                        <span>Performance Blue</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="black">
+                        <span class="colour-swatch black"></span>
+                        <span>Shadow Black</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="grey">
+                        <span class="colour-swatch grey"></span>
+                        <span>Cyber Grey</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="orange">
+                        <span class="colour-swatch orange"></span>
+                        <span>Code Orange</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- PLATINUM COLOURS -->
+            <div class="colour-selector-section" id="platinumColourSection" hidden>
+
+                <h3>02 / Platinum Colours</h3>
+
+                <div id="platinumColourOptions" class="colour-options">
+
+                    <button type="button" class="colour-choice" data-colour="platinum-white">
+                        <span class="colour-swatch white"></span>
+                        <span>Frozen White</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="platinum-black">
+                        <span class="colour-swatch black"></span>
+                        <span>Agate Black</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="platinum-grey">
+                        <span class="colour-swatch grey"></span>
+                        <span>Carbonized Grey</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="platinum-silver">
+                        <span class="colour-swatch silver"></span>
+                        <span>Iconic Silver</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="platinum-red">
+                        <span class="colour-swatch red"></span>
+                        <span>Lucid Red</span>
+                    </button>
+
+                    <button type="button" class="colour-choice" data-colour="platinum-green">
+                        <span class="colour-swatch green"></span>
+                        <span>Acacia Green</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- VIRTUAL COCKPIT -->
+        <section class="dashboard-panel">
+
+            <div class="dashboard-heading">
+                <h2>Virtual Raptor Cockpit</h2>
+                <span>SIMULATION MODE</span>
+            </div>
+
+            <div class="cockpit-display">
+
+                <div class="dashboard-status" id="engineStatus">
+                    ENGINE OFF
+                </div>
+
+                <div class="dashboard-meters">
+
+                    <div class="meter">
+                        <strong id="speedValue">0</strong>
+                        <small>KM/H</small>
+                    </div>
+
+                    <div class="meter">
+                        <strong id="rpmValue">0</strong>
+                        <small>RPM</small>
+                    </div>
+
+                    <div class="meter">
+                        <strong id="gearValue">P</strong>
+                        <small>GEAR</small>
+                    </div>
+
+                </div>
+
+                <div class="cockpit-controls">
+
+                    <!-- ENGINE -->
+                    <div class="cockpit-control-group">
+                        <h3>ENGINE</h3>
+
+                        <button type="button"
+                            id="engineToggle"
+                            class="cockpit-button">
+                            START ENGINE
+                        </button>
+                    </div>
+
+                    <!-- VEHICLE SYSTEMS -->
+                    <div class="cockpit-control-group">
+                        <h3>VEHICLE SYSTEMS</h3>
+
+                        <div class="system-buttons">
+
+                            <button type="button" id="lightsToggle" class="cockpit-button">
+                                LIGHTS OFF
+                            </button>
+
+                            <button type="button" id="wipersToggle" class="cockpit-button">
+                                WIPERS OFF
+                            </button>
+
+                            <button type="button" id="lockToggle" class="cockpit-button">
+                                UNLOCKED
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- DRIVING SIMULATION -->
+                    <div class="cockpit-control-group">
+                        <h3>DRIVING SIMULATION</h3>
+
+                        <div class="system-buttons">
+
+                            <button type="button" id="accelerateButton" class="cockpit-button">
+                                ACCELERATE
+                            </button>
+
+                            <button type="button" id="brakeButton" class="cockpit-button">
+                                BRAKE
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- PARKING ASSIST -->
+                    <div class="cockpit-control-group parking-assist">
+
+                        <h3>PARKING ASSIST SYSTEM</h3>
+
+                        <div class="parking-screen">
+
+                            <div class="parking-screen-header">
+                                <span id="parkingViewTitle">RAPTOR 360° VIEW</span>
+                                <span id="parkingStatus">SYSTEM OFF</span>
+                            </div>
+
+                            <div class="parking-display">
+
+                                <div class="parking-sensor front-sensor">
+                                    <span>FRONT SENSOR</span>
+                                    <div class="sensor-indicator" id="frontSensorIndicator"></div>
+                                    <strong id="frontDistance">--</strong>
+                                </div>
+
+                                <div class="parking-vehicle">
+                                    <span>🚙</span>
+                                    <small>YOUR RAPTOR</small>
+                                </div>
+
+                                <div class="parking-sensor rear-sensor">
+                                    <span>REAR SENSOR</span>
+                                    <div class="sensor-indicator" id="rearSensorIndicator"></div>
+                                    <strong id="rearDistance">--</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="parking-warning" id="parkingWarning">
+                                PARKING ASSIST INACTIVE
+                            </div>
+
+                        </div>
+
+                        <div class="system-buttons">
+
+                            <button type="button"
+                                id="parkingToggle"
+                                class="cockpit-button">
+                                ACTIVATE PARKING ASSIST
+                            </button>
+
+                            <button type="button"
+                                id="parkingReverse"
+                                class="cockpit-button">
+                                REVERSE CAMERA
+                            </button>
+
+                            <button type="button"
+                                id="parking360"
+                                class="cockpit-button">
+                                360° CAMERA
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <p class="option-placeholder">
+                        Demonstration only — cockpit and parking features are software simulations.
+                        They do not control or detect obstacles around a real vehicle.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <a href="index.html#home" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+        </a>
+
+        <a href="index.html#search" class="nav-item">
+            <span class="nav-icon">⌕</span>
+            <span>Search</span>
+        </a>
+
+        <a href="index.html#saved" class="nav-item">
+            <span class="nav-icon">♡</span>
+            <span>Saved</span>
+        </a>
+
+        <a href="customiser.html" class="nav-item active">
+            <span class="nav-icon">🛠</span>
+            <span>Custom Lab</span>
+        </a>
+
+        <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <!-- FOOTER -->
+    <footer class="lab-footer">
+        RAPTOR CUSTOM LAB · POWERED BY RAPTOR LINK
+    </footer>
+
+</div>
+
+<script src="js/customiser.js"></script>
+<script src="js/theme.js"></script>
+
+</body>
+</html>

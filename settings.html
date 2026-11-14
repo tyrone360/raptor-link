@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090b0e">
+
+    <title>Settings | RAPTOR LINK</title>
+
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="icon" href="assets/icons/facon/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <main class="settings-page">
+
+        <header class="settings-header">
+            <div class="brand"> <span>LINK</span></div>
+            <a href="index.html" class="back-link">Showroom</a>
+        </header>
+
+        <section class="settings-intro">
+            <span class="eyebrow">PERSONALISE YOUR EXPERIENCE</span>
+            <h1>Settings</h1>
+            <p>
+                Make RAPTOR LINK feel right for you. Choose how the
+                showroom and Custom Lab look on your device.
+            </p>
+        </section>
+
+        <section class="settings-card">
+
+            <h2>Appearance</h2>
+
+            <p>
+                Select your preferred display theme. Your choice will
+                be saved and used across RAPTOR LINK.
+            </p>
+
+            <div class="theme-options">
+
+                <button
+                    type="button"
+                    class="theme-option"
+                    data-theme-choice="dark"
+                    aria-pressed="false">
+
+                    <div class="theme-preview dark-preview">
+                        <div class="preview-block"></div>
+
+                        <div class="preview-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <strong>Dark Mode</strong>
+                    <small>Dark automotive appearance</small>
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option"
+                    data-theme-choice="light"
+                    aria-pressed="false">
+
+                    <div class="theme-preview light-preview">
+                        <div class="preview-block"></div>
+
+                        <div class="preview-lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <strong>Light Mode</strong>
+                    <small>Bright, clean appearance</small>
+                </button>
+
+            </div>
+
+            <div class="selection-status" id="themeStatus" aria-live="polite">
+                Your saved appearance
+            </div>
+
+        </section>
+
+        <footer class="settings-footer">
+            RAPTOR LINK Â· YOUR TRUCK. YOUR EXPERIENCE.
+        </footer>
+
+    </main>
+
+    <!-- Compact Bottom Navigation -->
+    <nav class="bottom-navigation" aria-label="Main navigation">
+
+        <a href="index.html#home" class="nav-item">
+             <span class="nav-icon">⌂</span>
+            <span>Home</span>
+        </a>
+
+        <a href="index.html#search" class="nav-item">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
+            <span>Search</span>
+        </a>
+
+        <a href="index.html#saved" class="nav-item">
+            <span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.6c0 4.2-8.8 10-8.8 10s-8.8-5.8-8.8-10A4.6 4.6 0 0 1 12 6.2a4.6 4.6 0 0 1 8.8 2.4Z"/></svg></span>
+            <span>Saved</span>
+        </a>
+
+        <a href="customiser.html" class="nav-item">
+             <span class="nav-icon">🛠</span>
+            <span>Custom Lab</span>
+        </a>
+
+        <a href="settings.html" class="nav-item active" aria-current="page">
+   <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <script src="js/theme.js"></script>
+
+    <script>
+        document.addEventListener("click", function (event) {
+            const choice = event.target.closest("[data-theme-choice]");
+
+            if (!choice) return;
+
+            const status = document.getElementById("themeStatus");
+
+            if (status) {
+                status.textContent =
+                    choice.dataset.themeChoice === "light"
+                        ? "Light Mode selected"
+                        : "Dark Mode selected";
+            }
+        });
+    </script>
+
+</body>
+</html>

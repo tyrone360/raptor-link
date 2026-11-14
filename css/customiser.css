@@ -1,0 +1,1399 @@
+
+/* =========================================
+   RAPTOR LINK — RAPTOR SMART CONTROL
+   Premium automotive dashboard
+========================================= */
+
+:root {
+    --rc-bg: #090b0e;
+    --rc-panel: #14181d;
+    --rc-panel-light: #1b2128;
+    --rc-border: rgba(255,255,255,.10);
+    --rc-text: #f4f5f6;
+    --rc-muted: #929ba5;
+    --rc-orange: #ff5a1f;
+    --rc-orange-soft: rgba(255,90,31,.13);
+    --rc-green: #35d07f;
+    --rc-red: #ff4545;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 100px;
+    background: var(--rc-bg);
+    color: var(--rc-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font-family: inherit;
+}
+
+.custom-lab {
+    min-height: 100vh;
+    padding-bottom: 25px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,90,31,.09), transparent 38%),
+        var(--rc-bg);
+    color: var(--rc-text);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.lab-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 6%;
+    background: rgba(9,11,14,.94);
+    border-bottom: 1px solid var(--rc-border);
+    backdrop-filter: blur(18px);
+}
+
+.lab-brand {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.lab-brand span {
+    color: var(--rc-orange);
+}
+
+.lab-back {
+    color: var(--rc-text);
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid var(--rc-border);
+    border-radius: 30px;
+    font-size: 12px;
+    transition: .2s ease;
+}
+
+.lab-back:hover {
+    border-color: var(--rc-orange);
+    color: var(--rc-orange);
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.lab-intro {
+    max-width: 850px;
+    margin: auto;
+    padding: 55px 20px 35px;
+    text-align: center;
+}
+
+.lab-intro .eyebrow {
+    color: var(--rc-orange);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.lab-intro h1 {
+    margin: 14px 0;
+    font-size: clamp(34px, 6vw, 64px);
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -2px;
+}
+
+.lab-intro p {
+    color: var(--rc-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   MAIN GRID
+========================================= */
+
+.lab-layout {
+    width: min(1240px, 92%);
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, .85fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.vehicle-preview,
+.custom-panel,
+.dashboard-panel {
+    min-width: 0;
+    overflow: hidden;
+    background: linear-gradient(145deg, #181d23, #101317);
+    border: 1px solid var(--rc-border);
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.18);
+}
+
+/* =========================================
+   VEHICLE DISPLAY
+========================================= */
+
+.vehicle-preview {
+    position: relative;
+}
+
+.preview-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 23px;
+}
+
+.preview-heading h2,
+.custom-panel h2,
+.dashboard-heading h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.preview-heading span,
+.dashboard-heading span {
+    color: var(--rc-orange);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.vehicle-stage {
+    position: relative;
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 55%, rgba(255,255,255,.14), transparent 55%),
+        linear-gradient(145deg, #252b32, #101317 75%);
+}
+
+.vehicle-stage::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+}
+
+.vehicle-image-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 760px;
+    transition: filter .3s ease;
+}
+
+.vehicle-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 390px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 20px rgba(0,0,0,.38));
+    transition: opacity .25s ease, filter .3s ease;
+}
+
+.preview-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 17px 23px;
+    background: rgba(255,255,255,.025);
+}
+
+.preview-caption strong {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.preview-caption span {
+    color: var(--rc-orange);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* =========================================
+   CUSTOMISATION PANEL
+========================================= */
+
+.custom-panel {
+    padding: 24px;
+}
+
+.custom-panel > h2 {
+    margin-bottom: 8px;
+}
+
+.option-placeholder {
+    color: var(--rc-muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.custom-panel > .option-placeholder {
+    margin-bottom: 24px;
+}
+
+.model-selector-section,
+.colour-selector-section {
+    margin-top: 25px;
+}
+
+.model-selector-section h3,
+.colour-selector-section h3,
+.cockpit-control-group h3 {
+    margin: 0 0 13px;
+    color: var(--rc-orange);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+}
+
+.vehicle-model-selector {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 9px;
+}
+
+.model-choice {
+    min-height: 50px;
+    padding: 10px 7px;
+    background: #101419;
+    border: 1px solid var(--rc-border);
+    border-radius: 9px;
+    color: #aab1b9;
+    font-size: 10px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.model-choice:hover,
+.model-choice.active {
+    color: #fff;
+    background: var(--rc-orange-soft);
+    border-color: var(--rc-orange);
+}
+
+/* =========================================
+   COLOUR SELECTOR
+========================================= */
+
+.colour-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 9px;
+}
+
+.colour-choice {
+    min-height: 86px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 4px;
+    background: #101419;
+    border: 1px solid var(--rc-border);
+    border-radius: 9px;
+    color: #d7dce1;
+    font-size: 9px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.colour-choice:hover,
+.colour-choice.active {
+    background: var(--rc-orange-soft);
+    border-color: var(--rc-orange);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.colour-swatch {
+    display: block;
+    width: 29px;
+    height: 29px;
+    border: 2px solid rgba(255,255,255,.35);
+    border-radius: 50%;
+    box-shadow: 0 3px 9px rgba(0,0,0,.4);
+}
+
+.colour-swatch.factory { background: #777; }
+.colour-swatch.red { background: #c51d25; }
+.colour-swatch.blue { background: #1764a5; }
+.colour-swatch.black { background: #111; }
+.colour-swatch.grey { background: #777; }
+.colour-swatch.orange { background: #ff5a1f; }
+.colour-swatch.white { background: #eee; }
+.colour-swatch.silver { background: #aaa; }
+.colour-swatch.green { background: #53684b; }
+
+.colour-selector-section[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   VIRTUAL SMART CONTROL DASHBOARD
+========================================= */
+
+.dashboard-panel {
+    grid-column: 1 / -1;
+    padding: 25px;
+}
+
+.dashboard-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.cockpit-display {
+    margin-top: 20px;
+    padding: 25px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,90,31,.08), transparent 50%),
+        #080b0e;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.dashboard-status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 30px;
+    background: #151a20;
+    color: #aab1b9;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.dashboard-status.engine-on {
+    color: var(--rc-green);
+    border-color: rgba(53,208,127,.35);
+    background: rgba(53,208,127,.08);
+}
+
+.dashboard-status.engine-off {
+    color: var(--rc-orange);
+}
+
+.dashboard-meters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.meter {
+    position: relative;
+    padding: 22px 12px;
+    background: linear-gradient(145deg, #1c232a, #11161b);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+}
+
+.meter strong {
+    display: block;
+    color: var(--rc-orange);
+    font-size: clamp(28px, 4vw, 39px);
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.meter small {
+    display: block;
+    margin-top: 7px;
+    color: var(--rc-muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   CONTROL GROUPS
+========================================= */
+
+.cockpit-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 17px;
+    margin-top: 24px;
+    text-align: left;
+}
+
+.cockpit-control-group {
+    min-width: 0;
+    padding: 19px;
+    background: #12171c;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+}
+
+.cockpit-control-group h3 {
+    margin-bottom: 15px;
+}
+
+.system-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.cockpit-button {
+    flex: 1 1 115px;
+    min-height: 45px;
+    padding: 12px 10px;
+    border: 1px solid #343c45;
+    border-radius: 8px;
+    background: #1c232a;
+    color: #e9edf0;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .7px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cockpit-button:hover {
+    border-color: var(--rc-orange);
+    background: #29201c;
+    transform: translateY(-1px);
+}
+
+.cockpit-button.active {
+    background: var(--rc-orange);
+    border-color: var(--rc-orange);
+    color: #fff;
+    box-shadow: 0 5px 18px rgba(255,90,31,.18);
+}
+
+.cockpit-button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Engine button emphasis */
+#engineToggle {
+    width: 100%;
+    min-height: 53px;
+    background: linear-gradient(135deg, #e94b19, #ff702e);
+    border-color: #ff702e;
+    color: #fff;
+}
+
+#engineToggle.active {
+    background: #273c32;
+    border-color: var(--rc-green);
+    color: var(--rc-green);
+}
+
+/* =========================================
+   PARKING ASSIST
+========================================= */
+
+.parking-assist {
+    grid-column: 1 / -1;
+    margin-top: 0;
+}
+
+.parking-screen {
+    margin-bottom: 15px;
+    padding: 17px;
+    overflow: hidden;
+    background: #080d12;
+    border: 1px solid #303b45;
+    border-radius: 12px;
+}
+
+.parking-screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+    color: #aeb7c0;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+}
+
+#parkingStatus {
+    color: var(--rc-orange);
+}
+
+#parkingStatus.active {
+    color: var(--rc-green);
+}
+
+.parking-display {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 13px;
+    padding: 16px;
+    border-radius: 9px;
+    background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        #101820;
+    background-size: 25px 25px;
+}
+
+.parking-vehicle {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.parking-vehicle span {
+    font-size: 65px;
+    filter: drop-shadow(0 0 13px rgba(255,90,31,.3));
+}
+
+.parking-vehicle small {
+    color: #d7dde3;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.parking-sensor {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: #aeb7c0;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.parking-sensor strong {
+    color: #fff;
+    font-size: 11px;
+}
+
+.sensor-indicator {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #555;
+}
+
+.sensor-indicator.safe {
+    background: var(--rc-green);
+    box-shadow: 0 0 10px rgba(53,208,127,.7);
+}
+
+.sensor-indicator.warning {
+    background: #ffb020;
+    box-shadow: 0 0 10px rgba(255,176,32,.7);
+}
+
+.sensor-indicator.danger {
+    background: var(--rc-red);
+    box-shadow: 0 0 10px rgba(255,69,69,.8);
+}
+
+.parking-warning {
+    margin-top: 13px;
+    padding: 12px;
+    border-radius: 7px;
+    background: #171d23;
+    color: #aeb7c0;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.parking-warning.safe {
+    background: rgba(53,208,127,.1);
+    color: var(--rc-green);
+}
+
+.parking-warning.warning {
+    background: rgba(255,176,32,.1);
+    color: #ffb020;
+}
+
+.parking-warning.danger {
+    background: rgba(255,69,69,.1);
+    color: #ff6565;
+}
+
+.parking-assist .cockpit-button.active {
+    background: var(--rc-orange);
+    border-color: var(--rc-orange);
+}
+
+/* Disclaimer inside cockpit */
+.cockpit-controls > .option-placeholder {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 13px 15px;
+    border-left: 2px solid var(--rc-orange);
+    background: rgba(255,255,255,.035);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.lab-footer {
+    padding: 35px 15px;
+    color: #747d86;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+/* =========================================
+   BOTTOM NAVIGATION
+========================================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    min-height: 69px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 4px;
+    background: rgba(10,13,17,.96);
+    border-top: 1px solid var(--rc-border);
+    backdrop-filter: blur(16px);
+}
+
+.bottom-nav .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #89929c;
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.bottom-nav .nav-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.bottom-nav .nav-item.active,
+.bottom-nav .nav-item:hover {
+    color: var(--rc-orange);
+}
+
+@media (min-width: 768px) {
+    .bottom-nav {
+        left: 50%;
+        width: min(650px, 90%);
+        transform: translateX(-50%);
+        border: 1px solid var(--rc-border);
+        border-bottom: none;
+        border-radius: 14px 14px 0 0;
+    }
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 900px) {
+    .lab-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panel {
+        grid-column: auto;
+    }
+
+    .vehicle-stage {
+        min-height: 270px;
+    }
+
+    .vehicle-image-wrap img {
+        max-height: 330px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+    .lab-header {
+        padding: 15px 4%;
+    }
+
+    .lab-brand {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .lab-back {
+        padding: 9px 11px;
+        font-size: 10px;
+    }
+
+    .lab-intro {
+        padding: 40px 18px 25px;
+    }
+
+    .lab-intro h1 {
+        letter-spacing: -1px;
+    }
+
+    .lab-intro p {
+        font-size: 12px;
+    }
+
+    .lab-layout {
+        width: 94%;
+        gap: 14px;
+        margin-top: 15px;
+    }
+
+    .preview-heading {
+        padding: 17px;
+    }
+
+    .preview-heading h2,
+    .custom-panel h2,
+    .dashboard-heading h2 {
+        font-size: 15px;
+    }
+
+    .vehicle-stage {
+        min-height: 205px;
+        padding: 12px;
+    }
+
+    .vehicle-image-wrap img {
+        max-height: 250px;
+    }
+
+    .preview-caption {
+        padding: 14px 16px;
+        font-size: 10px;
+    }
+
+    .custom-panel,
+    .dashboard-panel {
+        padding: 17px;
+    }
+
+    .colour-options {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .dashboard-meters {
+        gap: 8px;
+    }
+
+    .meter {
+        padding: 17px 5px;
+    }
+
+    .meter strong {
+        font-size: 27px;
+    }
+
+    .meter small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .cockpit-display {
+        padding: 15px;
+    }
+
+    .cockpit-controls {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .cockpit-control-group {
+        padding: 15px;
+    }
+
+    .parking-assist {
+        grid-column: auto;
+    }
+
+    .cockpit-controls > .option-placeholder {
+        grid-column: auto;
+    }
+
+    .cockpit-button {
+        min-width: 0;
+        min-height: 44px;
+        font-size: 9px;
+    }
+
+    .parking-screen {
+        padding: 11px;
+    }
+
+    .parking-display {
+        min-height: 200px;
+        padding: 12px;
+    }
+
+    .parking-vehicle span {
+        font-size: 55px;
+    }
+
+    .parking-screen-header {
+        font-size: 8px;
+    }
+
+    .lab-footer {
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .lab-brand {
+        font-size: 12px;
+    }
+
+    .lab-back {
+        font-size: 9px;
+    }
+
+    .dashboard-meters {
+        grid-template-columns: 1fr;
+    }
+
+    .meter {
+        padding: 12px;
+    }
+}
+/* =========================================
+   RAPTOR LINK — MATCH HOMEPAGE NAVIGATION
+   Platinum Sport floating glass design
+========================================= */
+
+/* TOP NAVIGATION */
+.lab-header {
+    position: sticky;
+    top: 12px;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    min-height: 68px;
+    margin: 12px 20px 0;
+    padding: 0 20px;
+
+    background: rgba(25, 25, 28, 0.72);
+    border: 1px solid rgba(180, 190, 205, 0.45);
+    border-radius: 22px;
+
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    box-shadow:
+        0 8px 32px rgba(30, 40, 55, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    transition: .3s ease;
+}
+
+.lab-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #FAFAFA;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lab-brand span {
+    color: #C7353D;
+}
+
+.lab-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 16px;
+
+    color: #FAFAFA;
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 15px;
+
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition: .3s ease;
+}
+
+.lab-back:hover {
+    color: #C7353D;
+    border-color: #C7353D;
+    background: rgba(199, 53, 61, 0.10);
+    transform: translateY(-2px);
+}
+
+/* BOTTOM FLOATING NAVIGATION */
+.bottom-nav {
+    position: fixed;
+    left: 50%;
+    bottom: calc(15px + env(safe-area-inset-bottom));
+    z-index: 1100;
+
+    width: min(460px, calc(100% - 28px));
+    min-height: auto;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 12px 8px;
+
+    background: rgba(35, 35, 38, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 25px;
+
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transform: translateX(-50%);
+}
+
+.bottom-nav .nav-item {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 2px;
+
+    color: #929ba5;
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.bottom-nav .nav-icon {
+    font-size: 23px;
+    line-height: 1;
+    transition: .3s ease;
+}
+
+.bottom-nav .nav-item:hover,
+.bottom-nav .nav-item.active {
+    color: #C7353D;
+    background: rgba(199, 53, 61, 0.12);
+}
+
+.bottom-nav .nav-item.active .nav-icon {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 3px 5px rgba(199, 53, 61, 0.25));
+}
+
+/* MOBILE NAVIGATION */
+@media (max-width: 600px) {
+    .lab-header {
+        top: 8px;
+        margin: 10px 12px 0;
+        min-height: 62px;
+        padding: 0 15px;
+        border-radius: 19px;
+    }
+
+    .lab-brand {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .lab-back {
+        padding: 9px 11px;
+        font-size: 10px;
+    }
+
+    .bottom-nav {
+        width: min(460px, calc(100% - 28px));
+        bottom: calc(15px + env(safe-area-inset-bottom));
+        padding: 10px 6px;
+        border-radius: 23px;
+    }
+
+    .bottom-nav .nav-item {
+        font-size: 9px;
+    }
+
+    .bottom-nav .nav-icon {
+        font-size: 21px;
+    }
+}
+/* RAPTOR LINK LOGO */
+.lab-logo {
+    display: block;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.lab-brand {
+    text-decoration: none;
+}
+
+.lab-brand-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #FAFAFA;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lab-brand-text span {
+    color: #C7353D;
+}
+
+@media (max-width: 600px) {
+    .lab-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .lab-brand-text {
+        font-size: 13px;
+        gap: 4px;
+    }
+}
+/* =========================================
+   COMPACT RAPTOR LINK NAVBARS
+========================================= */
+
+/* Compact top navbar */
+.lab-header {
+    min-height: 54px;
+    padding: 0 15px;
+    margin: 8px 16px 0;
+    border-radius: 17px;
+    gap: 10px;
+}
+
+.lab-logo {
+    width: 32px;
+    height: 32px;
+}
+
+.lab-brand-text {
+    font-size: 13px;
+    gap: 4px;
+}
+
+.lab-back {
+    padding: 7px 11px;
+    font-size: 10px;
+    border-radius: 12px;
+}
+
+/* Compact floating bottom navbar */
+.bottom-nav {
+    width: min(390px, calc(100% - 40px));
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 7px 6px;
+    border-radius: 19px;
+}
+
+.bottom-nav .nav-item {
+    gap: 3px;
+    padding: 5px 2px;
+    font-size: 8px;
+}
+
+.bottom-nav .nav-icon {
+    font-size: 18px;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    .lab-header {
+        top: 6px;
+        min-height: 49px;
+        margin: 7px 10px 0;
+        padding: 0 11px;
+        border-radius: 15px;
+    }
+
+    .lab-logo {
+        width: 29px;
+        height: 29px;
+    }
+
+    .lab-brand-text {
+        font-size: 11px;
+    }
+
+    .lab-back {
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+
+    .bottom-nav {
+        width: calc(100% - 36px);
+        padding: 6px 4px;
+    }
+
+    .bottom-nav .nav-icon {
+        font-size: 17px;
+    }
+
+    .bottom-nav .nav-item {
+        font-size: 8px;
+    }
+}
+/* =========================================
+   RAPTOR LINK — CUSTOM LAB LIGHT MODE
+========================================= */
+
+html[data-theme="light"] body {
+    background: #f4f5f6 !important;
+    color: #17191c !important;
+}
+
+html[data-theme="light"] .custom-lab {
+    background: #f4f5f6 !important;
+    color: #17191c !important;
+}
+
+/* HEADER */
+html[data-theme="light"] .lab-header {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: #dce3ec !important;
+    color: #17191c !important;
+}
+
+/* MAIN PANELS */
+html[data-theme="light"] .custom-panel,
+html[data-theme="light"] .dashboard-panel,
+html[data-theme="light"] .parking-assist {
+    background: #ffffff !important;
+    color: #17191c !important;
+    border: 1px solid #dce3ec !important;
+    box-shadow: 0 8px 25px rgba(20, 36, 58, 0.06);
+}
+
+/* VEHICLE PREVIEW */
+html[data-theme="light"] .vehicle-preview {
+    background: #ffffff !important;
+    color: #17191c !important;
+    border-color: #dce3ec !important;
+}
+
+html[data-theme="light"] .vehicle-stage {
+    background: #e9edf2 !important;
+    border-color: #d5dce5 !important;
+}
+
+html[data-theme="light"] .preview-caption {
+    color: #26364b !important;
+}
+
+/* VEHICLE AND COLOUR OPTIONS */
+html[data-theme="light"] .colour-choice {
+    background: #f1f4f7 !important;
+    color: #26364b !important;
+    border-color: #d5dce5 !important;
+}
+
+html[data-theme="light"] .colour-choice:hover,
+html[data-theme="light"] .colour-choice.active {
+    background: #ffffff !important;
+    color: #c7353d !important;
+    border-color: #c7353d !important;
+}
+
+/* COCKPIT */
+html[data-theme="light"] .cockpit-display,
+html[data-theme="light"] .cockpit-controls,
+html[data-theme="light"] .cockpit-control-group {
+    background: #f1f4f7 !important;
+    color: #17191c !important;
+    border-color: #d5dce5 !important;
+}
+
+html[data-theme="light"] .cockpit-button {
+    background: #ffffff !important;
+    color: #26364b !important;
+    border-color: #d5dce5 !important;
+}
+
+html[data-theme="light"] .cockpit-button:hover {
+    border-color: #c7353d !important;
+    color: #c7353d !important;
+}
+
+/* PARKING ASSIST */
+html[data-theme="light"] .parking-screen,
+html[data-theme="light"] .parking-display {
+    background: #e9edf2 !important;
+    color: #17191c !important;
+    border-color: #d5dce5 !important;
+}
+
+html[data-theme="light"] .parking-vehicle {
+    color: #26364b !important;
+}
+
+html[data-theme="light"] .parking-sensor {
+    border-color: #aeb9c7 !important;
+}
+
+html[data-theme="light"] .parking-warning {
+    color: #a52b32 !important;
+}
+
+/* HEADINGS AND GENERAL TEXT */
+html[data-theme="light"] .custom-lab h1,
+html[data-theme="light"] .custom-lab h2,
+html[data-theme="light"] .custom-lab h3,
+html[data-theme="light"] .custom-lab p,
+html[data-theme="light"] .custom-lab label {
+    color: #26364b;
+}
+
+/* BOTTOM NAVIGATION */
+html[data-theme="light"] .bottom-nav,
+html[data-theme="light"] .bottom-navigation {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: #dce3ec !important;
+    color: #17191c !important;
+}
+
+html[data-theme="light"] .bottom-nav .nav-item,
+html[data-theme="light"] .bottom-navigation .nav-item {
+    color: #667080 !important;
+}
+
+html[data-theme="light"] .bottom-nav .nav-item.active,
+html[data-theme="light"] .bottom-navigation .nav-item.active {
+    color: #c7353d !important;
+    background: rgba(199, 53, 61, 0.08) !important;
+}
+
+/* TRANSITIONS */
+html[data-theme="light"] .custom-lab *,
+html[data-theme="light"] .bottom-nav,
+html[data-theme="light"] .bottom-navigation {
+    transition: background-color .25s ease,
+                color .25s ease,
+                border-color .25s ease;
+}
+/* iOS-style transparent glass navigation */
+.bottom-nav,
+.bottom-navigation {
+    background: rgba(255, 255, 255, 0.10) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    backdrop-filter: blur(28px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+    border-radius: 24px;
+}
+
+/* Light mode glass */
+html[data-theme="light"] .bottom-nav,
+html[data-theme="light"] .bottom-navigation {
+    background: rgba(255, 255, 255, 0.48) !important;
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow:
+        0 8px 32px rgba(30, 40, 60, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}

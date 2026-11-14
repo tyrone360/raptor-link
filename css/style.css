@@ -1,0 +1,2112 @@
+
+/* =================================
+   RAPTOR LINK - DESIGN SYSTEM
+   Platinum Sport
+================================= */
+
+:root {
+    --black: #111111;
+    --graphite: #343434;
+    --silver: #B9BDC3;
+    --white: #FAFAFA;
+    --racing-red: #C7353D;
+
+    --background: #FAFAFA;
+    --surface: #FFFFFF;
+    --text: #111111;
+    --muted: #777777;
+    --border: rgba(17, 17, 17, 0.10);
+
+   --glass: rgba(255, 255, 255, 0.72);
+--glass-border: rgba(255, 255, 255, 0.65);
+
+--header-glass: rgba(255, 255, 255, 0.68);
+--header-glass-border: rgba(180, 190, 205, 0.45);
+--header-shadow: 0 8px 32px rgba(30, 40, 55, 0.12);
+--header-highlight: rgba(255, 255, 255, 0.85);
+--toggle-glass: rgba(255, 255, 255, 0.55);
+    --radius: 20px;
+    --transition: 0.3s ease;
+}
+
+/* DARK THEME */
+
+[data-theme="dark"] {
+    --background: #111111;
+    --surface: #1C1C1E;
+    --text: #FAFAFA;
+    --muted: #A0A0A0;
+    --border: rgba(255, 255, 255, 0.12);
+
+    --glass: rgba(35, 35, 38, 0.78);
+    --glass-border: rgba(255, 255, 255, 0.13);
+
+    --header-glass: rgba(25, 25, 28, 0.72);
+--header-glass-border: rgba(255, 255, 255, 0.13);
+--header-shadow: 0 8px 32px rgba(0, 0, 0, 0.30);
+--header-highlight: rgba(255, 255, 255, 0.08);
+--toggle-glass: rgba(255, 255, 255, 0.08);
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    transition: background var(--transition),
+                color var(--transition);
+    min-height: 100vh;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* APPLICATION CONTAINER */
+
+#app {
+    min-height: 100vh;
+    padding-bottom: 110px;
+}
+
+/* REUSABLE CONTAINER */
+
+.container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+}
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-symbol {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--racing-red);
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: var(--racing-red);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* BUTTONS */
+
+.btn-primary {
+    background: var(--racing-red);
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: #A9232B;
+    transform: translateY(-2px);
+}
+
+/* GLASS EFFECT */
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    #app {
+        padding-bottom: 100px;
+    }
+
+    .container {
+        width: 92%;
+    }
+}
+
+/* =========================================
+   RAPTOR LINK - HOMEPAGE DESIGN
+   PLATINUM SPORT
+========================================= */
+
+
+/* =====================================
+   RAPTOR LINK - GLASS NAVBAR
+===================================== */
+
+
+.site-header {
+    position: sticky;
+    top: 12px;
+    z-index: 1000;
+    margin: 12px 20px 0;
+
+    background: var(--header-glass);
+
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    border: 1px solid var(--header-glass-border);
+    border-radius: 22px;
+
+    box-shadow:
+        var(--header-shadow),
+        inset 0 1px 0 var(--header-highlight);
+
+    transition:
+        background 0.3s ease,
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.theme-toggle {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--header-glass-border);
+    border-radius: 15px;
+
+    background: var(--toggle-glass);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: var(--text);
+    font-size: 21px;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--header-highlight);
+    transform: translateY(-2px);
+}
+
+.theme-toggle:active {
+    transform: scale(0.94);
+}
+
+.header-content {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: var(--text);
+    text-decoration: none;
+}
+
+.brand-light {
+    font-weight: 400;
+    color: var(--muted);
+}
+
+
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+}
+
+.theme-toggle:active {
+    transform: scale(0.94);
+}
+
+/* MOBILE ADJUSTMENTS */
+
+@media (max-width: 600px) {
+
+    .site-header {
+        margin: 10px 12px 0;
+        top: 8px;
+        border-radius: 19px;
+    }
+
+    .header-content {
+        min-height: 62px;
+        padding: 0 15px;
+    }
+
+    .brand {
+        font-size: 15px;
+    }
+
+}
+
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 490px;
+    margin-top: 35px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 40%,
+            rgba(199, 53, 61, 0.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            120deg,
+            #111111,
+            #292929,
+            #111111
+        );
+
+    color: #FAFAFA;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 55px;
+    max-width: 590px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--racing-red);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #C7353D;
+}
+
+.hero-content p {
+    color: #C5C5C5;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 380px;
+}
+.hero-visual {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 55%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111111 0%,
+            rgba(17,17,17,0.35) 45%,
+            rgba(17,17,17,0.1)
+        ),
+        url("../assets/images/raptor-desert.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    right: 35px;
+    bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #FFFFFF;
+}
+
+.hero-overlay span {
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+.hero-overlay strong {
+    font-size: clamp(35px, 5vw, 65px);
+    letter-spacing: 5px;
+}
+
+.hero-overlay small {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #C7353D;
+}
+
+/* SECTION HEADINGS */
+
+.search-section {
+    padding-top: 75px;
+}
+
+.section-heading h2,
+.offers-heading h2 {
+    font-size: 27px;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 10px 12px 10px 20px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.search-icon {
+    font-size: 25px;
+    color: var(--muted);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.search-box input::placeholder {
+    color: var(--muted);
+}
+
+
+/* =====================================
+   PREMIUM RAPTOR VEHICLE OFFERS
+===================================== */
+
+.offers-section {
+    padding-top: 75px;
+    padding-bottom: 80px;
+}
+
+.offers-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.offers-heading h2 {
+    margin-top: 8px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.coming-soon {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--racing-red);
+    font-weight: 800;
+    padding: 9px 12px;
+    border-radius: 30px;
+    background: rgba(199, 53, 61, 0.09);
+    border: 1px solid rgba(199, 53, 61, 0.20);
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.vehicle-card {
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(199, 53, 61, 0.45);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+}
+
+/* VEHICLE VISUAL */
+
+.vehicle-placeholder {
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(110, 110, 110, 0.65),
+            rgba(42, 42, 45, 0.95) 48%,
+            #101012 100%
+        );
+
+    color: #FFFFFF;
+}
+
+.vehicle-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 35%,
+            rgba(199, 53, 61, 0.13) 100%
+        );
+
+    pointer-events: none;
+}
+
+.vehicle-placeholder::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+    box-shadow: 0 0 0 25px rgba(255,255,255,0.025),
+                0 0 0 50px rgba(255,255,255,0.02);
+}
+
+.vehicle-placeholder span {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 1;
+
+    color: #F05A62;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.vehicle-placeholder strong {
+    position: relative;
+    z-index: 1;
+
+    font-size: clamp(27px, 4vw, 39px);
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.55);
+}
+
+/* VEHICLE INFORMATION */
+
+.vehicle-info {
+    padding: 25px;
+}
+
+.vehicle-category {
+    font-size: 10px;
+    color: var(--racing-red);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.vehicle-info h3 {
+    margin: 11px 0 8px;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    color: var(--text);
+}
+
+.vehicle-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.offer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+
+    padding: 8px 12px;
+    border-radius: 30px;
+
+    background: var(--background);
+    border: 1px solid var(--border);
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+
+    .offers-section {
+        padding-top: 55px;
+        padding-bottom: 65px;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .vehicle-placeholder {
+        min-height: 200px;
+    }
+    .vehicle-placeholder {
+    position: relative;
+    overflow: hidden;
+}
+
+.vehicle-placeholder img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.vehicle-placeholder::before {
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vehicle-placeholder span,
+.vehicle-placeholder strong {
+    position: relative;
+    z-index: 2;
+}
+}
+
+
+/* BOTTOM GLASS NAVIGATION */
+
+.bottom-navigation {
+    position: fixed;
+    z-index: 200;
+    bottom: calc(15px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(460px, calc(100% - 28px));
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 12px 8px;
+
+    border-radius: 25px;
+
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 var(--glass-border);
+
+    transition:
+        background 0.3s ease,
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+
+/* NAVIGATION ITEMS */
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    padding: 8px 2px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* NAVIGATION ICON */
+
+.nav-icon {
+    font-size: 23px;
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+/* ACTIVE NAVIGATION */
+
+.nav-item.active {
+    color: var(--racing-red);
+    background: rgba(199, 53, 61, 0.09);
+}
+
+.nav-item.active .nav-icon {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 2px 5px rgba(199, 53, 61, 0.35));
+}
+
+/* HOVER EFFECT */
+
+.nav-item:hover {
+    color: var(--racing-red);
+    background: rgba(199, 53, 61, 0.07);
+}
+
+.nav-item:active {
+    transform: scale(0.94);
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 440px;
+        margin-top: 18px;
+    }
+
+    .hero-content {
+        padding: 30px 25px;
+        align-self: flex-end;
+    }
+
+   .hero-visual {
+    width: 100%;
+    height: 65%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(17, 17, 17, 0.05) 0%,
+            rgba(17, 17, 17, 0.25) 45%,
+            #111111 100%
+        ),
+        url("../assets/images/raptor-desert.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+    .hero-overlay {
+        right: 20px;
+        top: 35px;
+        bottom: auto;
+    }
+
+    .hero-overlay strong {
+        font-size: 38px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+    }
+
+    .search-section {
+        padding-top: 50px;
+    }
+
+    .offers-section {
+        padding-top: 50px;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-placeholder {
+        min-height: 170px;
+    }
+
+    .section-heading h2,
+    .offers-heading h2 {
+        font-size: 23px;
+    }
+
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .brand {
+        font-size: 14px;
+    }
+
+    .search-box {
+        gap: 8px;
+        padding-left: 12px;
+    }
+
+    .search-box .btn-primary {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+}
+
+/* REDUCE MOTION FOR ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* =========================================
+   VEHICLE DETAILS MODAL
+========================================= */
+
+.vehicle-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.vehicle-modal.active {
+    display: flex;
+}
+
+.vehicle-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: #181818;
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+
+    animation: modalAppear 0.3s ease;
+}
+
+.vehicle-modal-content > img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.modal-vehicle-info {
+    padding: 28px;
+}
+
+.modal-vehicle-info h2 {
+    margin: 10px 0;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+.modal-vehicle-info p {
+    color: #b5b5b5;
+    line-height: 1.7;
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 14px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+
+    background: transparent;
+    color: #ffffff;
+
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.modal-actions button:hover {
+    background: #c7353d;
+    border-color: #c7353d;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MOBILE MODAL */
+
+@media (max-width: 600px) {
+    .vehicle-modal {
+        padding: 12px;
+    }
+
+    .vehicle-modal-content {
+        border-radius: 18px;
+    }
+
+    .vehicle-modal-content > img {
+        height: 230px;
+    }
+
+    .modal-vehicle-info {
+        padding: 20px;
+    }
+
+    .modal-vehicle-info h2 {
+        font-size: 25px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   SAVED VEHICLES SECTION
+========================================= */
+
+.saved-section {
+    padding-top: 70px;
+    padding-bottom: 120px;
+    min-height: 350px;
+}
+
+.saved-section .section-heading {
+    margin-bottom: 28px;
+}
+
+.saved-section .section-heading p {
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+#emptySavedMessage {
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 20px;
+    border: 1px dashed var(--glass-border);
+    border-radius: 20px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+#savedVehiclesGrid:empty {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .saved-section {
+        padding-top: 45px;
+        padding-bottom: 110px;
+    }
+
+    #emptySavedMessage {
+        padding: 28px 15px;
+    }
+}
+
+
+/* =========================================
+   CONTACT RAPTOR LINK
+========================================= */
+
+.contact-section {
+    padding-top: 75px;
+    padding-bottom: 50px;
+}
+
+.contact-section .section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.contact-section .section-heading p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.contact-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 30px 18px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--racing-red);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: rgba(199, 53, 61, 0.10);
+    color: var(--racing-red);
+    font-size: 25px;
+}
+
+.contact-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 4px 0 0;
+}
+
+.contact-card p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.contact-card > span:last-child {
+    color: var(--racing-red);
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 750px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-section {
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-card {
+        padding: 25px 16px;
+    }
+}
+
+/* =========================================
+   RAPTOR LINK FOOTER
+========================================= */
+
+.site-footer {
+    position: relative;
+    width: 100%;
+    margin-top: 60px;
+    padding: 55px 0 30px;
+    background: var(--glass);
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 22px;
+}
+
+.footer-brand {
+    text-decoration: none;
+}
+
+.footer-content > p {
+    max-width: 380px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-socials a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    background: var(--glass);
+    transition: all 0.25s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--racing-red);
+    border-color: var(--racing-red);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-top: 22px;
+    margin-top: 12px;
+    border-top: 1px solid var(--glass-border);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* MOBILE FOOTER */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        margin-top: 40px;
+        padding: 45px 0 25px;
+    }
+
+    .footer-socials {
+        gap: 8px;
+    }
+
+    .footer-socials a {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+}
+
+/* NEW RAPTOR LINK LOGO */
+
+.brand-logo {
+    display: block;
+    width: 145px;
+    height: 55px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.footer-brand .brand-logo {
+    width: 160px;
+    height: 65px;
+    object-position: center;
+}
+
+@media (max-width: 600px) {
+    .brand-logo {
+        width: 120px;
+        height: 48px;
+    }
+}
+/* VEHICLE MODAL HIGHLIGHTS */
+
+.modal-highlights {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--header-glass);
+    border: 1px solid var(--header-glass-border);
+    border-radius: 16px;
+}
+
+.modal-highlights h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.modal-highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-highlights li {
+    padding: 9px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    border-bottom: 1px solid var(--header-glass-border);
+}
+
+.modal-highlights li:last-child {
+    border-bottom: none;
+}
+
+.modal-highlights li::before {
+    content: "✓";
+    color: #d49b45;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* VEHICLE SPECIFICATIONS */
+
+.modal-specifications {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--header-glass);
+    border: 1px solid var(--header-glass-border);
+    border-radius: 16px;
+}
+
+.modal-specifications h3 {
+    font-size: 17px;
+    margin-bottom: 18px;
+    color: var(--text-primary);
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 14px;
+    background: rgba(128, 128, 128, 0.07);
+    border: 1px solid var(--header-glass-border);
+    border-radius: 12px;
+    min-width: 0;
+}
+
+.spec-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.spec-value {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .spec-item {
+        padding: 12px;
+    }
+}
+
+/* =================================
+   RAPTOR LINK - LIGHT MODE MODAL
+================================= */
+
+:root:not([data-theme="dark"]) .modal-highlights,
+:root:not([data-theme="dark"]) .modal-specifications {
+    background: #f1f5f9;
+    border: 1px solid #d5deea;
+}
+
+/* Section headings */
+
+:root:not([data-theme="dark"]) .modal-highlights h3,
+:root:not([data-theme="dark"]) .modal-specifications h3 {
+    color: #14243a;
+    font-weight: 700;
+}
+
+/* Vehicle highlights */
+
+:root:not([data-theme="dark"]) .modal-highlights li {
+    color: #26364b;
+    border-bottom-color: #d5deea;
+    font-weight: 500;
+}
+
+:root:not([data-theme="dark"]) .modal-highlights li::before {
+    color: #c58b25;
+}
+
+/* Specification cards */
+
+:root:not([data-theme="dark"]) .spec-item {
+    background: #ffffff;
+    border: 1px solid #dce3ec;
+    box-shadow: 0 2px 8px rgba(15, 35, 60, 0.05);
+}
+
+/* Specification labels */
+
+:root:not([data-theme="dark"]) .spec-label {
+    color: #53647a;
+    font-weight: 600;
+}
+
+/* Specification values */
+
+:root:not([data-theme="dark"]) .spec-value {
+    color: #14243a;
+    font-weight: 700;
+}
+
+/* PREMIUM VEHICLE VIEW DETAILS BUTTON */
+
+.details-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #c58b25;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.details-btn:hover {
+    background: #a97116;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(197, 139, 37, 0.25);
+}
+
+/* COMPACT RED VIEW DETAILS BUTTON */
+
+.details-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #c62828;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.details-btn:hover {
+    background: #a71919;
+    transform: translateY(-1px);
+}
+
+.details-btn:focus-visible {
+    outline: 2px solid #c62828;
+    outline-offset: 3px;
+}
+
+/* LIGHT MODE VEHICLE CARDS */
+
+:root:not([data-theme="dark"]) .vehicle-card {
+    background: #ffffff;
+    border: 1px solid #dce3ec;
+    box-shadow: 0 8px 24px rgba(20, 36, 58, 0.07);
+}
+
+:root:not([data-theme="dark"]) .vehicle-info h3 {
+    color: #14243a;
+}
+
+:root:not([data-theme="dark"]) .vehicle-info p {
+    color: #53647a;
+}
+
+:root:not([data-theme="dark"]) .offer-status {
+    color: #a97116;
+    font-weight: 700;
+}
+
+/* SAVED VEHICLE REMOVE BUTTON */
+
+.saved-vehicle-card {
+    position: relative;
+}
+
+.favourite-remove-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #c62828;
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.favourite-remove-btn:hover {
+    background: #a71919;
+    transform: scale(1.08);
+}
+
+.favourite-remove-btn:focus-visible {
+    outline: 2px solid #c62828;
+    outline-offset: 3px;
+}
+
+/* SAVED VEHICLES COUNTER */
+
+.saved-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 16px;
+    padding: 8px 15px;
+
+    background: rgba(198, 40, 40, 0.09);
+    border: 1px solid rgba(198, 40, 40, 0.25);
+    border-radius: 30px;
+
+    color: #c62828;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+:root[data-theme="dark"] .saved-count {
+    background: rgba(198, 40, 40, 0.15);
+    border-color: rgba(239, 83, 80, 0.3);
+    color: #ff7777;
+}
+
+/* RAPTOR LINK FAVOURITE NOTIFICATIONS */
+
+.favourite-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    z-index: 9999;
+
+    width: max-content;
+    max-width: calc(100% - 32px);
+
+    padding: 14px 22px;
+    border-radius: 12px;
+
+    background: #172337;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 20px);
+
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0.25s ease;
+}
+
+.favourite-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.favourite-notification.success {
+    border-left: 4px solid #2eaf68;
+}
+
+.favourite-notification.error {
+    border-left: 4px solid #c62828;
+}
+
+@media (max-width: 480px) {
+    .favourite-notification {
+        bottom: 90px;
+        font-size: 12px;
+        padding: 12px 16px;
+    }
+}
+
+/* SAVED NAVIGATION COUNTER */
+.saved-nav-icon {
+    position: relative;
+}
+
+.nav-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #c62828;
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-badge[hidden] {
+    display: none;
+}
+/* =========================================
+   RAPTOR LINK — COMPACT HOMEPAGE NAVBARS
+========================================= */
+
+/* COMPACT TOP NAVBAR */
+.site-header {
+    top: 8px;
+    margin: 8px 16px 0;
+    border-radius: 17px;
+}
+
+.header-content {
+    min-height: 52px;
+    padding: 0 15px;
+}
+
+.brand {
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* LOGO */
+.brand-logo {
+    width: 115px;
+    height: 42px;
+}
+
+/* THEME BUTTON */
+.theme-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+/* COMPACT FLOATING BOTTOM NAVBAR */
+.bottom-navigation {
+    width: min(390px, calc(100% - 36px));
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 7px 6px;
+    border-radius: 19px;
+}
+
+.nav-item {
+    gap: 3px;
+    padding: 5px 2px;
+    font-size: 8px;
+}
+
+.nav-icon {
+    font-size: 18px;
+}
+
+/* REDUCE RESERVED SPACE FOR BOTTOM NAV */
+#app {
+    padding-bottom: 85px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .site-header {
+        top: 6px;
+        margin: 7px 10px 0;
+        border-radius: 15px;
+    }
+
+    .header-content {
+        min-height: 48px;
+        padding: 0 11px;
+    }
+
+    .brand {
+        gap: 6px;
+        font-size: 12px;
+    }
+
+    .brand-logo {
+        width: 100px;
+        height: 36px;
+    }
+
+    .theme-toggle {
+        width: 33px;
+        height: 33px;
+        font-size: 16px;
+    }
+
+    .bottom-navigation {
+        width: calc(100% - 36px);
+        padding: 6px 4px;
+    }
+
+    .nav-item {
+        font-size: 8px;
+        gap: 3px;
+    }
+
+    .nav-icon {
+        font-size: 17px;
+    }
+
+    #app {
+        padding-bottom: 80px;
+    }
+}
+
+/* =========================================
+   RAPTOR LINK — GLOBAL LIGHT MODE
+========================================= */
+
+html[data-theme="light"] {
+    --background: #f4f5f6;
+    --surface: #ffffff;
+    --text: #17191c;
+    --muted: #667080;
+    --border: rgba(17, 17, 17, 0.12);
+
+    --glass: rgba(255, 255, 255, 0.88);
+    --glass-border: rgba(180, 190, 205, 0.55);
+
+    --header-glass: rgba(255, 255, 255, 0.88);
+    --header-glass-border: rgba(180, 190, 205, 0.55);
+    --header-shadow: 0 8px 32px rgba(30, 40, 55, 0.10);
+    --header-highlight: rgba(255, 255, 255, 0.95);
+    --toggle-glass: rgba(255, 255, 255, 0.75);
+}
+
+/* PAGE BACKGROUND */
+
+html[data-theme="light"] body {
+    background: var(--background);
+    color: var(--text);
+}
+
+/* HEADER AND NAVIGATION */
+
+html[data-theme="light"] .site-header,
+html[data-theme="light"] .bottom-navigation {
+    color: var(--text);
+}
+
+/* SEARCH */
+
+html[data-theme="light"] .search-box {
+    background: #ffffff;
+    border-color: #dce1e8;
+    box-shadow: 0 8px 25px rgba(20, 36, 58, 0.05);
+}
+
+/* VEHICLE CARDS */
+
+html[data-theme="light"] .vehicle-card {
+    background: #ffffff;
+    border-color: #dce3ec;
+    color: #17191c;
+}
+
+html[data-theme="light"] .vehicle-info h3 {
+    color: #14243a;
+}
+
+html[data-theme="light"] .vehicle-info p {
+    color: #53647a;
+}
+
+/* SAVED VEHICLES */
+
+html[data-theme="light"] #emptySavedMessage {
+    background: #ffffff;
+    border-color: #dce3ec;
+    color: #667080;
+}
+
+/* CONTACT CARDS AND FOOTER */
+
+html[data-theme="light"] .contact-card,
+html[data-theme="light"] .site-footer {
+    background: rgba(255, 255, 255, 0.88);
+    color: #17191c;
+    border-color: #dce3ec;
+}
+
+html[data-theme="light"] .contact-card h3 {
+    color: #14243a;
+}
+
+/* VEHICLE DETAILS MODAL */
+
+html[data-theme="light"] .vehicle-modal {
+    background: rgba(20, 30, 45, 0.55);
+}
+
+html[data-theme="light"] .vehicle-modal-content {
+    background: #ffffff;
+    color: #17191c;
+    border-color: #dce3ec;
+}
+
+html[data-theme="light"] .modal-vehicle-info h2 {
+    color: #14243a;
+}
+
+html[data-theme="light"] .modal-vehicle-info p {
+    color: #53647a;
+}
+
+html[data-theme="light"] .modal-close {
+    background: rgba(20, 30, 45, 0.85);
+    color: #ffffff;
+}
+
+/* MODAL HIGHLIGHTS AND SPECIFICATIONS */
+
+html[data-theme="light"] .modal-highlights,
+html[data-theme="light"] .modal-specifications {
+    background: #f1f5f9;
+    border-color: #d5deea;
+}
+
+html[data-theme="light"] .modal-highlights h3,
+html[data-theme="light"] .modal-specifications h3 {
+    color: #14243a;
+}
+
+html[data-theme="light"] .modal-highlights li {
+    color: #26364b;
+    border-color: #d5deea;
+}
+
+html[data-theme="light"] .spec-item {
+    background: #ffffff;
+    border-color: #dce3ec;
+}
+
+html[data-theme="light"] .spec-label {
+    color: #53647a;
+}
+
+html[data-theme="light"] .spec-value {
+    color: #14243a;
+}
+
+/* NAVIGATION ACTIVE STATE */
+
+html[data-theme="light"] .nav-item {
+    color: #667080;
+}
+
+html[data-theme="light"] .nav-item.active {
+    color: #c7353d;
+    background: rgba(199, 53, 61, 0.09);
+}
+
+/* SMOOTH THEME TRANSITION */
+
+html[data-theme="light"] .vehicle-card,
+html[data-theme="light"] .contact-card,
+html[data-theme="light"] .search-box {
+    transition: background .3s ease,
+                color .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+}
+/* =====================================
+   LIGHT MODE - VEHICLE MODAL BUTTONS
+===================================== */
+
+html[data-theme="light"] #saveVehicleButton {
+    background: #e8edf5 !important;
+    color: #172033 !important;
+    border: 1px solid #cbd5e1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+html[data-theme="light"] #enquireVehicleButton {
+    background: #1769d2 !important;
+    color: #ffffff !important;
+    border: 1px solid #1769d2 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+html[data-theme="light"] #saveVehicleButton:hover {
+    background: #dce5f1 !important;
+}
+
+html[data-theme="light"] #enquireVehicleButton:hover {
+    background: #1056b5 !important;
+}
+
+/* Keep button text visible */
+html[data-theme="light"] #saveVehicleButton *,
+html[data-theme="light"] #enquireVehicleButton * {
+    color: inherit !important;
+}
+/* =========================================
+   RAPTOR LINK � RAPTOR EXPERIENCE GALLERY
+========================================= */
+
+.raptor-experience {
+    padding-top: 75px;
+    padding-bottom: 80px;
+}
+
+.raptor-experience .section-heading {
+    margin-bottom: 35px;
+}
+
+.raptor-experience .section-heading p {
+    max-width: 650px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.interior-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.interior-card {
+    overflow: hidden;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.interior-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.interior-card img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.interior-card:hover img {
+    transform: scale(1.04);
+}
+
+.interior-card-info {
+    padding: 23px;
+}
+
+.interior-card-info span {
+    color: #e32636;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.interior-card-info h3 {
+    margin: 12px 0 9px;
+    font-size: 19px;
+    font-weight: 850;
+}
+
+.interior-card-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+@media (max-width: 650px) {
+    .raptor-experience {
+        padding-top: 45px;
+        padding-bottom: 55px;
+    }
+
+    .interior-gallery {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .interior-card img {
+        height: 230px;
+    }
+
+    .interior-card-info {
+        padding: 19px;
+    }
+}
+/* RAPTOR LINK — CLEAN SVG ICONS */
+
+.ui-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.btn-primary .ui-icon,
+.details-btn .ui-icon {
+    margin-left: 7px;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon .ui-icon {
+    width: 21px;
+    height: 21px;
+}

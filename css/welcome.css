@@ -1,0 +1,603 @@
+﻿/* =====================================
+   RAPTOR LINK - WELCOME EXPERIENCE
+   CINEMATIC LIQUID GLASS DESIGN
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --blue: #258cff;
+    --blue-light: #70bdff;
+    --white: #ffffff;
+    --muted: #aab7c9;
+    --glass: rgba(255, 255, 255, 0.09);
+    --glass-border: rgba(255, 255, 255, 0.20);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: #080d16;
+    color: var(--white);
+    overflow: hidden;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.welcome-screen {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 70% 40%, #142b49 0%, transparent 55%),
+        #080d16;
+}
+
+/* BACKGROUND VEHICLE */
+
+.welcome-background {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+}
+
+.welcome-vehicle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    opacity: 0.83;
+    transform: scale(1.04);
+    animation: vehicleReveal 1.8s ease-out forwards,
+               vehicleFloat 14s ease-in-out 1.8s infinite alternate;
+}
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 10, 19, 0.97) 0%,
+            rgba(5, 10, 19, 0.80) 36%,
+            rgba(5, 10, 19, 0.22) 75%,
+            rgba(5, 10, 19, 0.48) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(5, 10, 19, 0.98) 0%,
+            transparent 48%,
+            rgba(5, 10, 19, 0.35) 100%
+        );
+}
+
+.background-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(29, 126, 255, 0.19),
+            transparent 38%
+        );
+}
+
+/* HEADER */
+
+.welcome-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+}
+
+.brand-mark {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #339bff, #0754b5);
+    box-shadow: 0 5px 25px rgba(27, 126, 255, 0.35);
+    font-weight: 900;
+    font-size: 23px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.brand-name span {
+    color: var(--blue-light);
+}
+
+.experience-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 17px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    color: #dce8f7;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #43d99a;
+    box-shadow: 0 0 12px #43d99a;
+}
+
+/* MAIN CONTENT */
+
+.welcome-content {
+    position: absolute;
+    top: 47%;
+    left: 9%;
+    transform: translateY(-50%);
+    max-width: 620px;
+    animation: contentReveal 1.2s ease-out both;
+}
+
+.welcome-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: var(--blue-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.welcome-eyebrow span {
+    width: 24px;
+    height: 1px;
+    background: var(--blue);
+}
+
+.welcome-content h1 {
+    font-size: clamp(54px, 8vw, 108px);
+    line-height: 0.94;
+    letter-spacing: -6px;
+    font-weight: 900;
+    text-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-content h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+}
+
+.welcome-description {
+    max-width: 390px;
+    margin-top: 28px;
+    color: #c1ccdc;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.vehicle-caption {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 35px;
+    color: #b4c4d9;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2.8px;
+}
+
+.caption-line {
+    width: 36px;
+    height: 2px;
+    background: var(--blue);
+    box-shadow: 0 0 12px var(--blue);
+}
+
+/* FOOTER AND SLIDER */
+
+.welcome-footer {
+    position: absolute;
+    bottom: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(370px, 88%);
+    text-align: center;
+}
+
+.swipe-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    margin-bottom: 17px;
+    color: #91a5bd;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.instruction-line {
+    width: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.swipe-track {
+    position: relative;
+    width: 100%;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    box-shadow:
+        0 12px 45px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.17);
+    overflow: hidden;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.swipe-progress {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    border-radius: 22px;
+    background: linear-gradient(
+        90deg,
+        rgba(18, 100, 210, 0.15),
+        rgba(38, 142, 255, 0.38)
+    );
+    pointer-events: none;
+}
+
+.swipe-handle {
+    position: absolute;
+    z-index: 2;
+    left: 6px;
+    top: 5px;
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 17px;
+    background: linear-gradient(145deg, #55b4ff, #0870e9);
+    color: white;
+    cursor: grab;
+    box-shadow:
+        0 4px 18px rgba(19, 119, 255, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: box-shadow 0.2s ease;
+    touch-action: none;
+}
+
+.swipe-handle:active {
+    cursor: grabbing;
+    box-shadow: 0 0 30px rgba(46, 147, 255, 0.8);
+}
+
+.handle-arrow {
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 400;
+    margin-top: -4px;
+}
+
+.swipe-text {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding-left: 45px;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    pointer-events: none;
+}
+
+.swipe-hint {
+    margin-top: 13px;
+    color: #8293a8;
+    font-size: 9px;
+    letter-spacing: 0.8px;
+}
+
+.skip-entry {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 20px;
+    color: #aebed2;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.skip-entry:hover {
+    color: white;
+}
+
+.skip-entry span {
+    color: var(--blue-light);
+    font-size: 15px;
+}
+
+/* VERSION */
+
+.welcome-version {
+    position: absolute;
+    bottom: 25px;
+    right: 6%;
+    color: rgba(190, 205, 224, 0.52);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+.welcome-version span {
+    color: var(--blue);
+}
+
+/* ANIMATIONS */
+
+@keyframes vehicleReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+
+    to {
+        opacity: 0.83;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes vehicleFloat {
+    from {
+        transform: scale(1.04) translateX(0);
+    }
+
+    to {
+        transform: scale(1.09) translateX(-1%);
+    }
+}
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translate(-25px, -50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .welcome-header {
+        padding: 22px 5%;
+    }
+
+    .brand-mark {
+        width: 37px;
+        height: 37px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
+
+    .brand-name {
+        font-size: 15px;
+        letter-spacing: 1.5px;
+    }
+
+    .experience-status {
+        padding: 9px 11px;
+        font-size: 7px;
+        letter-spacing: 0.8px;
+    }
+
+    .welcome-background {
+        inset: 0;
+    }
+
+    .welcome-vehicle {
+        object-position: 62% center;
+    }
+
+    .background-overlay {
+        background:
+            linear-gradient(
+                0deg,
+                rgba(5, 10, 19, 0.99) 0%,
+                rgba(5, 10, 19, 0.88) 36%,
+                rgba(5, 10, 19, 0.15) 100%
+            );
+    }
+
+    .welcome-content {
+        top: 44%;
+        left: 7%;
+        right: 7%;
+        max-width: none;
+    }
+
+    .welcome-eyebrow {
+        font-size: 8px;
+        letter-spacing: 3px;
+        margin-bottom: 18px;
+    }
+
+    .welcome-content h1 {
+        font-size: clamp(52px, 13vw, 78px);
+        letter-spacing: -3.5px;
+    }
+
+    .welcome-description {
+        font-size: 12px;
+        max-width: 280px;
+        margin-top: 20px;
+    }
+
+    .vehicle-caption {
+        margin-top: 23px;
+        font-size: 8px;
+    }
+
+    .welcome-footer {
+        bottom: 43px;
+        width: 88%;
+    }
+
+    .welcome-version {
+        display: none;
+    }
+}
+
+@media (max-height: 650px) {
+    .welcome-content {
+        top: 42%;
+    }
+
+    .welcome-content h1 {
+        font-size: clamp(45px, 7vw, 75px);
+    }
+
+    .welcome-description {
+        margin-top: 14px;
+    }
+
+    .vehicle-caption {
+        margin-top: 17px;
+    }
+
+    .welcome-footer {
+        bottom: 18px;
+    }
+
+    .swipe-instruction {
+        margin-bottom: 10px;
+    }
+
+    .swipe-hint {
+        margin-top: 8px;
+    }
+
+    .skip-entry {
+        margin-top: 10px;
+    }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   RAPTOR LINK — RED IDENTITY UPDATE
+========================================= */
+
+:root {
+    --blue: #e32636;
+    --blue-light: #ff5964;
+}
+
+/* Remove the top-right status pill */
+.experience-status {
+    display: none !important;
+}
+
+/* Red brand logo tile */
+.brand-mark {
+    background: linear-gradient(145deg, #ff5964, #a90016) !important;
+    box-shadow: 0 5px 25px rgba(227, 38, 54, 0.38) !important;
+}
+
+/* Red cinematic background glow */
+.background-glow {
+    background: radial-gradient(
+        circle at 75% 50%,
+        rgba(227, 38, 54, 0.20),
+        transparent 38%
+    ) !important;
+}
+
+/* Red slider progress */
+.swipe-progress {
+    background: linear-gradient(
+        90deg,
+        rgba(169, 0, 22, 0.20),
+        rgba(255, 65, 80, 0.48)
+    ) !important;
+}
+
+/* Red slider handle */
+.swipe-handle {
+    background: linear-gradient(145deg, #ff5964, #b90019) !important;
+    box-shadow:
+        0 4px 18px rgba(227, 38, 54, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.swipe-handle:active {
+    box-shadow: 0 0 30px rgba(255, 55, 70, 0.8) !important;
+}
