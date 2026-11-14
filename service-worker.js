@@ -5,13 +5,16 @@
    CUSTOM LAB + SETTINGS
 ===================================== */
 
-const CACHE_NAME = "raptor-link-v8";
+const CACHE_NAME = "raptor-link-v9";
 const CACHE_PREFIX = "raptor-link-";
 
 const APP_FILES = [
     // MAIN SHOWROOM
     "./",
     "./index.html",
+    "./welcome.html",
+    "./css/welcome.css",
+    "./js/welcome.js",
     "./css/style.css",
     "./js/script.js",
 
@@ -34,7 +37,7 @@ const APP_FILES = [
     "./assets/icons/icon-192.png",
     "./assets/icons/icon-512.png",
     "./assets/icons/icon-512-maskable.png",
-    "./assets/icons/facon/favicon.ico",
+    "./assets/icons/facon/favicon.ico.jpg",
 
     // BRANDING
     "./assets/images/raptor-logo.jpg",
@@ -137,6 +140,12 @@ self.addEventListener("fetch", (event) => {
 
                         const requestedPath = requestURL.pathname;
 
+                        if (requestedPath.endsWith("/welcome.html")) {
+                            return await cache.match("./welcome.html");
+                        }
+                        if (requestedPath.endsWith("/index.html")) {
+                            return await cache.match("./index.html");
+                        }
                         if (requestedPath.endsWith("/customiser.html")) {
                             return await cache.match("./customiser.html");
                         }
@@ -145,7 +154,7 @@ self.addEventListener("fetch", (event) => {
                             return await cache.match("./settings.html");
                         }
 
-                        return await cache.match("./index.html");
+                        return await cache.match("./welcome.html");
                     }
 
                     // OTHER OFFLINE RESOURCES

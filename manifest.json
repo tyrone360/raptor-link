@@ -4,7 +4,7 @@
     "name": "RAPTOR LINK",
     "short_name": "RAPTOR LINK",
     "description": "Discover premium Ford Ranger Raptor offers.",
-    "start_url": "./",
+    "start_url": "./welcome.html",
     "scope": "./",
     "display": "standalone",
     "orientation": "portrait-primary",

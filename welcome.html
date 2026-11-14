@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -113,5 +113,25 @@
 
     <script src="js/welcome.js"></script>
 
+<script>
+    // SERVICE WORKER REGISTRATION
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./service-worker.js")
+                .then((registration) => {
+                    console.log(
+                        "RAPTOR LINK Service Worker registered:",
+                        registration.scope
+                    );
+                })
+                .catch((error) => {
+                    console.error(
+                        "Service Worker registration failed:",
+                        error
+                    );
+                });
+        });
+    }
+</script>
 </body>
 </html>
